@@ -1,4 +1,18 @@
+# What is it?
+
+A console to manage [dedicated Pavlov VR](http://wiki.pavlov-vr.com/index.php?title=Dedicated_server) server using RCON.
+
+Once configured Pavlov VR RCON should be opened on the desktop and then viewed from within the VR headset.
+
+Main features:
+
+- select map
+- restart S&D
+- switch players between Red and Blue sides
+- allocate players into predefined teams and auto start a match
+
 # Requirements
+
 - Node: https://nodejs.org (tested with v10.15.3 and v12.18.2)
 
 # Installation
@@ -57,7 +71,8 @@ The loaded maps are stored in `/packages/backend/data/server-1.json`. As the fil
 - Ability to switch between the servers
 - Use different port than 9100
 - Fix retrieval of the names on the Players page
-- Better error handling when connection to RCON fails (currently need to wait till all calls fail for the UI to be unblocked)
+- Better error handling when connection to RCON fails (currently one needs to wait till all calls fail for the UI to be unblocked)
+- Handle other modes apart from S&D
 
 # License
 
