@@ -1,0 +1,22 @@
+.map-tile {
+  margin: 10px;
+  width: 278px;
+}
+
+.thumbnail {
+  width: 278px;
+  cursor: pointer;
+}
+
+.alt-thumbnail {
+  width: 276px;
+  height: 276px;
+  cursor: pointer;
+  font-size: 2em;
+  border-style: solid;
+  border-width: 1px;
+
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+}

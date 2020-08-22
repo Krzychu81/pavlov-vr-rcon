@@ -1,0 +1,21 @@
+{
+  "name": "pavlov-vr-rcon",
+  "version": "0.0.1",
+  "author": "Krzychu81 <https://github.com/Krzychu81>",
+  "license": "MIT",
+  "repository": "Krzychu81/pavlov-vr-rcon",
+  "homepage": "https://github.com/Krzychu81/pavlov-vr-rcon",
+  "private": true,
+  "keywords": [
+    "pavlov",
+    "rcon"
+  ],
+  "scripts": {
+    "start": "CI=true lerna run start --stream",
+    "start:win": "set \"CI=true\" && lerna run start --stream"
+  },
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  },
+  "dependencies": {}
+}

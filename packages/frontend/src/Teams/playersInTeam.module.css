@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.selector {
+  flex: 1;
+}
+
+.buttons {
+  margin: 20px;
+}

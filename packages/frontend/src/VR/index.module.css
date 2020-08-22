@@ -1,0 +1,49 @@
+.maps-switcher {
+  display: grid;
+  grid-template-areas:
+    'header'
+    'viewer'
+    'teams'
+    'players'
+    'footer';
+}
+
+.maps-viewer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.teams-viewer {
+  grid-area: 'teams';
+}
+
+.header {
+  grid-area: header;
+}
+
+.add-map {
+  margin: 10px;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+.players {
+  grid-area: players;
+  display: grid;
+  grid-template-areas:
+    'redPlayers bluePlayers';
+}
+
+.red-players {
+  grid-area: 'redPlayers'
+}
+
+.blue-players {
+  grid-area: 'bluePlayers'
+}
+
+path, polygon {
+  stroke: white;
+}
