@@ -3,9 +3,9 @@ import React from 'react'
 import propTypes from 'prop-types'
 
 import IconButton from '../Layout/IconButton'
-import { GrPowerReset, GrFastForward, GrStatusInfo } from 'react-icons/gr'
+import { GrPowerReset, GrFastForward } from 'react-icons/gr'
 
-const Header = ({rotateMap, resetSnd, serverInfo}) => {
+const Header = ({rotateMap, resetSnd}) => {
   return (
     <>
       <IconButton

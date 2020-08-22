@@ -37,7 +37,7 @@ On the Server page go to Configuration section and enter the following:
 
 - Name (can be anything)
 - IP of your RCON endpoint
-- Password to your RCON endpoint
+- Password to your RCON endpoint (or leave it empty and enter hashed password instead)
 
 and press submit. It will generate the hash and use that for connection.
 

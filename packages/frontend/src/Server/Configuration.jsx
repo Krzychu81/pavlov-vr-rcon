@@ -79,10 +79,10 @@ const Configuration = () => {
         </Form.Group>
 
         <Form.Group controlId="formPassword">
-          <Form.Label>Hash password</Form.Label>
+          <Form.Label>Hashed password</Form.Label>
           <Form.Control 
             type="text" 
-            placeholder="Enter password" 
+            placeholder="Enter hashed password" 
             value={config.password}
             onChange={ ({ target: { value: password }}) => {
               setConfig(prev => ({
