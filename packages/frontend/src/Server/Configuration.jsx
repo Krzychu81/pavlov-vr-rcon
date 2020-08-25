@@ -49,10 +49,10 @@ const Configuration = () => {
         </Form.Group>
 
         <Form.Group controlId="formIp">
-          <Form.Label>IP</Form.Label>
+          <Form.Label>IP:port</Form.Label>
           <Form.Control 
             type="text" 
-            placeholder="Enter IP" 
+            placeholder="Enter IP:port" 
             value={config.ip}
             onChange={ ({ target: { value: ip }}) => {
               setConfig(prev => ({

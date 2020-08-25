@@ -50,7 +50,7 @@ Once loaded go to http://localhost:3000.
 On the Server page go to Configuration section and enter the following:
 
 - Name (can be anything)
-- IP of your RCON endpoint
+- IP:port of your RCON endpoint
 - Password to your RCON endpoint (or leave it empty and enter hashed password instead)
 
 and press submit. It will generate the hash and use that for connection.
@@ -69,7 +69,7 @@ The loaded maps are stored in `/packages/backend/data/server-1.json`. As the fil
 
 - Authentication to be able to place the console on the server itself
 - Ability to switch between the servers
-- Use different port than 9100
+- ~~Use different port than 9100~~
 - Fix retrieval of the names on the Players page
 - Better error handling when connection to RCON fails (currently one needs to wait till all calls fail for the UI to be unblocked)
 - Handle other modes apart from S&D

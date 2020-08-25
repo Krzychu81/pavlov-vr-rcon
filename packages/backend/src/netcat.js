@@ -7,7 +7,17 @@ const {
 } = process.env
 
 const ncReal = (serverConfig, messages) => new Promise((res) => {
-  const client = Netcat.client(serverConfig.port || 9100, serverConfig.ip)
+  const parts = serverConfig.ip.split(':')
+  let ip
+  let port
+  if (isNaN(parts[parts.length - 1])) {
+    port = 9100
+    ip = serverConfig.ip
+  } else {
+    port = Number(parts[parts.length - 1])
+    ip = parts.slice(0, parts.length - 1).join('')
+  }
+  const client = Netcat.client(port, ip)
 
   const commands = [
     serverConfig.password,
