@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "npx babel src -d build",
-    "start": "npx nodemon src/index --exec \"npx babel-node\"",
+    "dev": "npx nodemon src/index --exec \"npx babel-node\"",
+    "start": "npx babel-node \"src/index\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

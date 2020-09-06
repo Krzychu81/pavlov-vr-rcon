@@ -12,6 +12,8 @@
   ],
   "scripts": {
     "start": "CI=true lerna run start --stream",
+    "dev": "CI=true lerna run dev --stream",
+    "dev:win": "set \"CI=true\" && lerna run dev --stream",
     "start:win": "set \"CI=true\" && lerna run start --stream"
   },
   "devDependencies": {
