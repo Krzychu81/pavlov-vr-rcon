@@ -6,9 +6,11 @@ import Section from '../Layout/Section'
 import IconButton from '../Layout/IconButton'
 import { FaPlay } from 'react-icons/fa'
 import { GrStatusInfo } from 'react-icons/gr'
+import { GrPowerReset } from 'react-icons/gr'
 
 const TeamsViewer = ({
   teams,
+  resetSnd,
   startMatch,
   serverInfo
 }) => {
@@ -33,6 +35,10 @@ const TeamsViewer = ({
         label="Start"
         disabled={selectedTeamIds.length !== 2}
         onClick={() => startMatch(selectedTeamIds)} />{' '}
+      <IconButton
+        Icon={GrPowerReset}
+        label="Reset SND"
+        onClick={resetSnd} />{' '}
       <div className={styles.container}>
         {teams.map(team => {      
           const selectionStyle = selectedTeamIds.includes(team.id) ? styles.selected : ''
@@ -75,6 +81,7 @@ TeamsViewer.propTypes = {
   teams: propTypes.array.isRequired,
   startMatch: propTypes.func.isRequired,
   refresh: propTypes.func.isRequired,
+  resetSnd: propTypes.func.isRequired,
 }
 
 export default TeamsViewer

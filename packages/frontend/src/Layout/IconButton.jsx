@@ -2,7 +2,7 @@ import React from 'react'
 import propTypes from 'prop-types'
 import Button from 'react-bootstrap/Button'
 
-const IconButton = ({Icon, label, onClick, disabled}) => {
+const IconButton = ({Icon, label, onClick, disabled = false}) => {
   return (
     <Button 
       size="lg" 

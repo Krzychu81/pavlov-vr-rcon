@@ -205,6 +205,7 @@ const VR = () => {
             teams={state.teams}
             startMatch={funcs.startMatch}
             serverInfo={funcs.serverInfo}
+            resetSnd={funcs.resetSnd}
           />
         </div>
         <div className={styles.players}>
