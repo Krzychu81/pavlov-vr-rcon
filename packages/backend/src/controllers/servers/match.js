@@ -10,8 +10,8 @@ const router = express.Router({ mergeParams: true })
 /**
  * Switch to selected map
  */
-router.get('/switchMap/:mapId', async (req, res) => {
-  const { mapId } = req.params
+router.get('/switchMap/:mapId/:mode', async (req, res) => {
+  const { mapId, mode } = req.params
   let id
   if (isNaN(mapId)) {
     if (!getValidInternalMap(mapId)) {
@@ -21,7 +21,7 @@ router.get('/switchMap/:mapId', async (req, res) => {
   } else {
     id = `UGC${mapId}`
   }
-  const response = await switchMap(req.custom.serverConfig, id)
+  const response = await switchMap(req.custom.serverConfig, id, mode)
   return res.status(200).json({ response })
 })
 

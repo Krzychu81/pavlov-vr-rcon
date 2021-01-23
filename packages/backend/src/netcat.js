@@ -63,8 +63,8 @@ const ncDummy = (serverConfig, messages) => ({
 
 const nc = NC_DISABLE === 'true' ? ncDummy : ncReal
 
-const switchMap = (serverConfig, id) => nc(serverConfig, [
-  `SwitchMap ${id} SND`,
+const switchMap = (serverConfig, id, mode = 'SND') => nc(serverConfig, [
+  `SwitchMap ${id} ${mode}`,
 ])
 
 const resetSnd = (serverConfig) => nc(serverConfig, [

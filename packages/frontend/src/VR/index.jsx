@@ -6,6 +6,7 @@ import Footer from './Footer'
 import MapsViewer from './MapsViewer'
 import TeamsViewer from './TeamsViewer'
 import Players from './Players'
+import ModeSetter from './ModeSetter'
 import { GlobalContext } from '../App'
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa'
 
@@ -37,6 +38,11 @@ function reducer(state, action) {
         ...state,
         teams: action.payload.teams,
       }
+    case 'SET_MODE':
+      return {
+        ...state,
+        mode: action.payload.mode,
+      }
     default:
       throw new Error('Incorrect action')
   }
@@ -44,8 +50,8 @@ function reducer(state, action) {
 
 // #region API functions
 
-const switchMap = (dispatch, api, id) => {
-  return api.serverGet(`/match/switchMap/${id}`)
+const switchMap = (dispatch, api, id, mode) => {
+  return api.serverGet(`/match/switchMap/${id}/${mode}`)
     .then(message => dispatch({
       type: 'SET_MESSAGE',
       payload: {
@@ -148,11 +154,25 @@ const startMatch = (api, teamIds) => {
   })
 }
 
+/**
+ * Set game mode to play
+ */
+
+const setMode = (dispatch, mode) => {
+  dispatch({
+    type: 'SET_MODE',
+    payload: {
+      mode
+    },
+  })
+  
+}
+
 //#endregion
 
 
 const VR = () => {
-  const [state, dispatch] = useReducer(reducer, { pavlovMaps: [], teams: [], message: null, players: {} })
+  const [state, dispatch] = useReducer(reducer, { pavlovMaps: [], teams: [], message: null, players: {}, mode: 'SND' })
   const { api } = useContext(GlobalContext)
 
   const funcs = useMemo(() => ({
@@ -164,7 +184,6 @@ const VR = () => {
       funcs.getTeams()
       funcs.getPlayers()
     },
-    switchMap: (id) => switchMap(dispatch, api, id),
     getPlayers: () => getPlayers(dispatch, api),
     getTeams: () => getTeams(dispatch, api),
     startMatch: async (teamIds) => {
@@ -172,7 +191,8 @@ const VR = () => {
       funcs.getPlayers()
     },
     switchToBlueTeam: (playerId) => switchTeam(dispatch, api, { playerId, teamId: 1}),
-    switchToRedTeam: (playerId) => switchTeam(dispatch, api, { playerId, teamId: 0})
+    switchToRedTeam: (playerId) => switchTeam(dispatch, api, { playerId, teamId: 0}),
+    setMode: (mode) => setMode(dispatch, mode)
   }), [dispatch, api])
 
   // Load initial maps
@@ -194,10 +214,17 @@ const VR = () => {
           />
         </div>
 
+        <div className={styles['mode-setter']}>
+          <ModeSetter
+            setMode={funcs.setMode}
+            mode={state.mode}
+          />
+        </div>
+
         <div className={styles['maps-viewer']}>
           <MapsViewer
             pavlovMaps={state.pavlovMaps}
-            switchMap={funcs.switchMap}
+            switchMap={(id) => switchMap(dispatch, api, id, state.mode)}
           />
         </div>
         <div className={styles['teams-viewer']}>

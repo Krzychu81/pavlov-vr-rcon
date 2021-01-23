@@ -2,6 +2,7 @@
   display: grid;
   grid-template-areas:
     'header'
+    'mode-setter'
     'viewer'
     'teams'
     'players'
@@ -15,6 +16,10 @@
 
 .teams-viewer {
   grid-area: 'teams';
+}
+
+.mode-setter {
+  grid-area: 'mode-setter';
 }
 
 .header {

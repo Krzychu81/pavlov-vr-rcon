@@ -24,6 +24,18 @@ const internalMaps = [
     title: 'Sand',
   },
   {
+    id: 'santorini',
+    title: 'Santorini',
+  },
+  {
+    id: 'stalingrad',
+    title: 'Stalingrad',
+  },
+  {
+    id: 'station',
+    title: 'Station',
+  },
+  {
     id: 'prisonbreak',
     title: 'Siberia',
   },
