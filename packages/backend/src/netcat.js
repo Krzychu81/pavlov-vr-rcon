@@ -54,12 +54,15 @@ const ncReal = (serverConfig, messages) => new Promise((res) => {
   client.start()
 })
 
-const ncDummy = (serverConfig, messages) => ({
-  messages: {
+const ncDummy = (serverConfig, messages) => {
+  const response = {
     messages,
     serverConfig,
-  },
-})
+  }
+  console.log(response)
+
+  return response
+}
 
 const nc = NC_DISABLE === 'true' ? ncDummy : ncReal
 
@@ -79,8 +82,6 @@ const serverInfo = (serverConfig) => nc(serverConfig, [
   'ServerInfo',
 ])
 
-const inspectPlayers = (serverConfig, steamIds) => nc(serverConfig,
-  steamIds.map((steamId) => `InspectPlayer ${steamId}`))
 
 const playersWithDetailsDummy = [{
   PlayerInfo: {
@@ -113,6 +114,14 @@ const playersWithDetailsDummy = [{
   },
 },
 ]
+
+
+const inspectPlayersReal = (serverConfig, steamIds) => nc(serverConfig,
+  steamIds.map((steamId) => `InspectPlayer ${steamId}`))
+
+const inspectPlayersDummy = async () => playersWithDetailsDummy
+
+const inspectPlayers = NC_DISABLE === 'true' ? inspectPlayersDummy : inspectPlayersReal
 
 const whoIsPlayingReal = async (serverConfig) => {
   const playerList = [...await nc(serverConfig, [
@@ -173,6 +182,26 @@ const switchTeamDummy = (serverConfig, { steamIds, teamId }) => new Promise((res
 
 const switchTeam = NC_DISABLE === 'true' ? switchTeamDummy : switchTeamReal
 
+const setTeamSkin = async (serverConfig, { skinId, teamId }) => {
+  const steamIds = await whoIsPlaying(serverConfig)
+
+  
+
+  const playersWithDetails = [...await inspectPlayers(serverConfig, steamIds)]
+
+  console.log(playersWithDetails)
+
+  const playersInTeam = playersWithDetails.map(
+    (player) => player.PlayerInfo,
+  ).map((player) => ({
+    id: player.UniqueId,
+    TeamId: player.TeamId,
+  })).filter((player) => player.TeamId === teamId)
+
+  return nc(serverConfig, [
+    ...playersInTeam.map((player) => `SetPlayerSkin ${player.id} ${skinId}`),
+  ])
+}
 export {
   switchMap,
   resetSnd,
@@ -181,4 +210,5 @@ export {
   rotateMap,
   serverInfo,
   switchTeam,
+  setTeamSkin,
 }

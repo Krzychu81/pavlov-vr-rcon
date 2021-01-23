@@ -165,7 +165,16 @@ const setMode = (dispatch, mode) => {
       mode
     },
   })
-  
+}
+
+/**
+ * Set skins of team
+ */
+const setTeamSkin = (dispatch, api, { skinId, teamId }) => {
+  return api.serverPost(`/match/setTeamSkin`, {
+    skinId, teamId
+  })
+    .then(() => getPlayers(dispatch, api))
 }
 
 //#endregion
@@ -236,24 +245,24 @@ const VR = () => {
           />
         </div>
         <div className={styles.players}>
-          {state.players.red &&
-            <Players
-              className={styles['red-players']}
-              title='Red'
-              switchTeam={funcs.switchToBlueTeam}
-              switchTeamIcon={FaArrowRight}
-              players={state.players.red}
-            />
-          }
-          {state.players.blue &&
-            <Players 
-              className={styles['blue-players']}
-              switchTeam={funcs.switchToRedTeam}
-              switchTeamIcon={FaArrowLeft}
-              title='Blue'
-              players={state.players.blue}
-            />
-          }
+          <Players
+            className={styles['red-players']}
+            title='Red'
+            switchTeam={funcs.switchToBlueTeam}
+            switchTeamIcon={FaArrowRight}
+            players={state.players.red}
+            setTeamSkin={(skinId) => setTeamSkin(dispatch, api, { skinId, teamId: '0' })}
+          />
+        
+          <Players 
+            className={styles['blue-players']}
+            switchTeam={funcs.switchToRedTeam}
+            switchTeamIcon={FaArrowLeft}
+            title='Blue'
+            players={state.players.blue}
+            setTeamSkin={(skinId) => setTeamSkin(dispatch, api, { skinId, teamId: '1' })}
+          />
+  
         </div>
 
         <div className={styles.footer}>

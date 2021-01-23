@@ -1,7 +1,7 @@
 import express from 'express'
 import _ from 'lodash'
 import {
-  switchMap, resetSnd, rotateMap, switchTeam, whoIsPlaying,
+  switchMap, resetSnd, rotateMap, switchTeam, whoIsPlaying, setTeamSkin
 } from '../../netcat'
 import { getValidInternalMap } from '../../utils'
 
@@ -38,6 +38,16 @@ router.get('/resetSnd', async (req, res) => {
    */
 router.get('/rotateMap', async (req, res) => {
   const response = await rotateMap(req.custom.serverConfig)
+  res.status(200).json({ response })
+})
+
+/**
+ * Set team skin
+ */
+router.post('/setTeamSkin', async (req, res) => {
+  const { teamId, skinId } = req.body
+
+  const response = await setTeamSkin(req.custom.serverConfig, { skinId, teamId })
   res.status(200).json({ response })
 })
 

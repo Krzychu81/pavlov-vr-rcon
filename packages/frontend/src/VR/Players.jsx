@@ -2,6 +2,7 @@ import React from 'react'
 import BootstrapTable from 'react-bootstrap-table-next'
 import IconButton from '../Layout/IconButton'
 import Section from '../Layout/Section'
+import Button from 'react-bootstrap/Button'
 
 const logoFormatter = (src) => {
   if (!src) return null
@@ -51,21 +52,30 @@ const defaultSorted = [{
   order: 'asc'
 }]
 
+const skins = [
+  'clown', 'prisoner', 'naked', 'farmer', 'russian', 'nato'
+]
 
-const Players = ({ players, switchTeam, switchTeamIcon, title }) => {
+
+const Players = ({ players, switchTeam, switchTeamIcon, title, setTeamSkin }) => {
   const options = React.useMemo(() => ({
     columns: columns({ switchTeam, switchTeamIcon })
   }), [ switchTeam,switchTeamIcon ])
 
   return (
     <Section title={title}>
+      {skins.map(skinId => <>
+      <Button as="input" type="button" value={skinId} onClick={() => setTeamSkin(skinId)} />{' '}
+      </>)}
+      <br /><br />
+      { players &&
       <BootstrapTable 
         bootstrap4
         keyField='id' 
         data={ players } 
         columns={ options.columns } 
         defaultSorted={defaultSorted}
-      />
+      />}
     </Section>
   )
 }
