@@ -4,6 +4,7 @@ require('dotenv').config()
 
 const {
   NC_DISABLE,
+  RCON_SERVER,
 } = process.env
 
 const ncReal = (serverConfig, messages) => new Promise((res) => {
@@ -12,7 +13,7 @@ const ncReal = (serverConfig, messages) => new Promise((res) => {
   let port
   if (isNaN(parts[parts.length - 1])) {
     port = 9100
-    ip = serverConfig.ip
+    ip = RCON_SERVER && RCON_SERVER !== '' ? RCON_SERVER : serverConfig.ip
   } else {
     port = Number(parts[parts.length - 1])
     ip = parts.slice(0, parts.length - 1).join('')
