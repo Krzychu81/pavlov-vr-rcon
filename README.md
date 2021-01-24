@@ -72,7 +72,8 @@ The loaded maps are stored in `/packages/backend/data/server-1.json`. As the fil
 - ~~Use different port than 9100~~
 - Fix retrieval of the names on the Players page
 - Better error handling when connection to RCON fails (currently one needs to wait till all calls fail for the UI to be unblocked)
-- Handle other modes apart from S&D
+- ~~Handle other modes apart from S&D~~
+- ~~Set team skins~~
 
 # License
 
