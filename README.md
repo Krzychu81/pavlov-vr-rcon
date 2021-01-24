@@ -4,6 +4,8 @@ A console to manage [dedicated Pavlov VR](http://wiki.pavlov-vr.com/index.php?ti
 
 Once configured Pavlov VR RCON should be opened on the desktop and then viewed from within the VR headset.
 
+<img src="./VR screen.png">
+
 Main features:
 
 - select map
