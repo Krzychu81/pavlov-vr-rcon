@@ -5,6 +5,7 @@ import mapRotationRoute from './servers/mapRotation'
 import matchRoute from './servers/match'
 import configRoute from './servers/config'
 import playersRoute from './servers/players'
+import statusRoute from './servers/status'
 import {
   serverInfo,
 } from '../netcat'
@@ -47,5 +48,6 @@ router.use('/mapRotation', mapRotationRoute)
 router.use('/match', matchRoute)
 router.use('/config', configRoute)
 router.use('/players', playersRoute)
+router.use('/status', statusRoute)
 
 export default router

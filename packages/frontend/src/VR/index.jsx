@@ -7,6 +7,7 @@ import MapsViewer from './MapsViewer'
 import TeamsViewer from './TeamsViewer'
 import Players from './Players'
 import ModeSetter from './ModeSetter'
+import ServerChecker from './ServerChecker'
 import { GlobalContext } from '../App'
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa'
 
@@ -42,6 +43,11 @@ function reducer(state, action) {
       return {
         ...state,
         mode: action.payload.mode,
+      }
+    case 'SET_SERVER_STATUS':
+      return {
+        ...state,
+        visible: action.payload.visible,
       }
     default:
       throw new Error('Incorrect action')
@@ -177,11 +183,25 @@ const setTeamSkin = (dispatch, api, { skinId, teamId }) => {
     .then(() => getPlayers(dispatch, api))
 }
 
+/**
+ * Check if server is visible in the server list
+ */
+
+const getServerStatus = async (dispatch, api) => {
+  const visible = (await api.serverGet(`/status`)).visible
+
+  dispatch({
+    type: 'SET_SERVER_STATUS',
+    payload: {
+      visible
+    }
+  })
+}
+
 //#endregion
 
-
 const VR = () => {
-  const [state, dispatch] = useReducer(reducer, { pavlovMaps: [], teams: [], message: null, players: {}, mode: 'SND' })
+  const [state, dispatch] = useReducer(reducer, { pavlovMaps: [], teams: [], message: null, players: {}, mode: 'SND', visible: false })
   const { api } = useContext(GlobalContext)
 
   const funcs = useMemo(() => ({
@@ -201,7 +221,8 @@ const VR = () => {
     },
     switchToBlueTeam: (playerId) => switchTeam(dispatch, api, { playerId, teamId: 1}),
     switchToRedTeam: (playerId) => switchTeam(dispatch, api, { playerId, teamId: 0}),
-    setMode: (mode) => setMode(dispatch, mode)
+    setMode: (mode) => setMode(dispatch, mode),
+    getServerStatus: () => getServerStatus(dispatch, api),
   }), [dispatch, api])
 
   // Load initial maps
@@ -209,12 +230,20 @@ const VR = () => {
     () => {
       funcs.getMaps()
       funcs.serverInfo()
+      funcs.getServerStatus()
     }, [ funcs ]
   )
 
   return (
     <IconContext.Provider value={{ size: '1.5em' }}>
       <div className={styles['maps-switcher']}>
+
+        <div className={styles['server-checker']}>
+          <ServerChecker
+            visible={state.visible}
+            getServerStatus={funcs.getServerStatus}
+          />
+        </div>
 
         <div className={styles.header}>
           <Header

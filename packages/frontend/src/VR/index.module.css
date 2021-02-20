@@ -1,12 +1,17 @@
 .maps-switcher {
   display: grid;
   grid-template-areas:
+    'server-checker'
     'header'
     'mode-setter'
     'viewer'
     'teams'
     'players'
     'footer';
+}
+
+.server-checker {
+  grid-area: 'server-checker';
 }
 
 .maps-viewer {
