@@ -51,7 +51,7 @@ Once loaded go to http://localhost:3000.
 
 On the Server page go to Configuration section and enter the following:
 
-- Name (can be anything)
+- Name - same as in your .ini file on the server (required to perform the server visibility check)
 - IP:port of your RCON endpoint
 - Password to your RCON endpoint (or leave it empty and enter hashed password instead)
 
@@ -76,6 +76,7 @@ The loaded maps are stored in `/packages/backend/data/server-1.json`. As the fil
 - Better error handling when connection to RCON fails (currently one needs to wait till all calls fail for the UI to be unblocked)
 - ~~Handle other modes apart from S&D~~
 - ~~Set team skins~~
+- ~~Server visibility check using 'https://pablub.club/~~
 
 # License
 
