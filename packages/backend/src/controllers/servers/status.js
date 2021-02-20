@@ -4,7 +4,7 @@ import { get } from '../../utils'
 const router = express.Router({ mergeParams: true })
 
 /**
- * Get IP and name
+ * Check if server is visible from Pavlov
  */
 router.get('/', async (req, res) => {
   const { serverConfig } = req.custom
