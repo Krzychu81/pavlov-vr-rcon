@@ -59,6 +59,13 @@ and press submit. It will generate the hash and use that for connection.
 
 Add some maps and then go to VR page. Enjoy!
 
+# Latest features
+
+- Can use different port than 9100
+- Handles different play modes - S&D, DM, TDM etc.
+- Ability to set the skin of the whole team - e.g. prisoner, clown etc.
+- Checks server visibility using 'https://pablub.club/
+
 # How to
 
 ## Add a map
@@ -71,12 +78,8 @@ The loaded maps are stored in `/packages/backend/data/server-1.json`. As the fil
 
 - Authentication to be able to place the console on the server itself
 - Ability to switch between the servers
-- ~~Use different port than 9100~~
 - Fix retrieval of the names on the Players page
 - Better error handling when connection to RCON fails (currently one needs to wait till all calls fail for the UI to be unblocked)
-- ~~Handle other modes apart from S&D~~
-- ~~Set team skins~~
-- ~~Server visibility check using 'https://pablub.club/~~
 
 # License
 
