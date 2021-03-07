@@ -6,12 +6,16 @@ Once configured Pavlov VR RCON should be opened on the desktop and then viewed f
 
 <img src="./VR screen.png">
 
-Main features:
+## Main features:
 
-- select map
-- restart S&D
-- switch players between Red and Blue sides
-- allocate players into predefined teams and auto start a match
+- Select map
+- Restart S&D
+- Switch players between Red and Blue sides
+- Allocate players into predefined teams and auto start a match
+- Can use different port than 9100
+- Handles different play modes - S&D, DM, TDM etc.
+- Ability to set the skin of the whole team - e.g. prisoner, clown etc.
+- Checks server visibility using https://pablub.club/
 
 # Requirements
 
@@ -59,12 +63,7 @@ and press submit. It will generate the hash and use that for connection.
 
 Add some maps and then go to VR page. Enjoy!
 
-# Latest features
 
-- Can use different port than 9100
-- Handles different play modes - S&D, DM, TDM etc.
-- Ability to set the skin of the whole team - e.g. prisoner, clown etc.
-- Checks server visibility using 'https://pablub.club/
 
 # How to
 
