@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
-import Form from 'react-bootstrap/form'
-import Button from 'react-bootstrap/button'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 import Section from '../Layout/Section'
 import { GlobalContext } from '../App'
 import { get, post } from '../utils'

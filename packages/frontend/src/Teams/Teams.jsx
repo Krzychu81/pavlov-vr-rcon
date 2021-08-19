@@ -3,8 +3,8 @@ import React, { useReducer, useEffect, useState, useRef, useMemo, useContext } f
 import Section from '../Layout/Section'
 import PlayersInTeam from './PlayersInTeam'
 import BootstrapTable from 'react-bootstrap-table-next'
-import Button from 'react-bootstrap/button'
-import Form from 'react-bootstrap/form'
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
 import { GlobalContext } from '../App'
 import { sortPlayersByNick } from './utils'
 

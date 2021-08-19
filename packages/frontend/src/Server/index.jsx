@@ -1,5 +1,5 @@
 import React, { } from 'react'
-import Container from 'react-bootstrap/container'
+import Container from 'react-bootstrap/Container'
 import Maps from './Maps'
 import Configuration from './Configuration'
 
