@@ -128,9 +128,7 @@ const whoIsPlayingReal = async (serverConfig) => {
   ])
 
   if (playerData) {
-    const playerList = [...await nc(serverConfig, [
-      'RefreshList',
-    ])][0].PlayerList
+    const playerList = playerData[0].PlayerList
 
     return playerList.map((player) => player.UniqueId)
   }
