@@ -2,7 +2,7 @@ import React, { useReducer, useEffect, useState, useRef, useMemo, useContext } f
 import { GlobalContext } from '../App'
 import Section from '../Layout/Section'
 import BootstrapTable from 'react-bootstrap-table-next'
-import Button from 'react-bootstrap/button'
+import Button from 'react-bootstrap/Button'
 
 function reducer(state, action) {
   switch (action.type) {

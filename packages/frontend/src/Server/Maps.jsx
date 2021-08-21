@@ -2,8 +2,8 @@ import React, { useReducer, useContext, useMemo, useEffect, useState, useRef } f
 import Section from '../Layout/Section'
 import { GlobalContext } from '../App'
 import BootstrapTable from 'react-bootstrap-table-next'
-import Button from 'react-bootstrap/button'
-import Form from 'react-bootstrap/form'
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
 import common from '@pavlov-rcon-ui/common'
 
 function reducer(state, action) {

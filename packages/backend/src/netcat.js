@@ -83,7 +83,6 @@ const serverInfo = (serverConfig) => nc(serverConfig, [
   'ServerInfo',
 ])
 
-
 const playersWithDetailsDummy = [{
   PlayerInfo: {
     UniqueId: '76561198374028403',
@@ -116,7 +115,6 @@ const playersWithDetailsDummy = [{
 },
 ]
 
-
 const inspectPlayersReal = (serverConfig, steamIds) => nc(serverConfig,
   steamIds.map((steamId) => `InspectPlayer ${steamId}`))
 
@@ -125,11 +123,17 @@ const inspectPlayersDummy = async () => playersWithDetailsDummy
 const inspectPlayers = NC_DISABLE === 'true' ? inspectPlayersDummy : inspectPlayersReal
 
 const whoIsPlayingReal = async (serverConfig) => {
-  const playerList = [...await nc(serverConfig, [
+  const playerData = await nc(serverConfig, [
     'RefreshList',
-  ])][0].PlayerList
+  ])
 
-  return playerList.map((player) => player.UniqueId)
+  if (playerData) {
+    const playerList = playerData[0].PlayerList
+
+    return playerList.map((player) => player.UniqueId)
+  }
+
+  return []
 }
 
 const whoIsPlayingDummy = async () => playersWithDetailsDummy.map(
@@ -185,8 +189,6 @@ const switchTeam = NC_DISABLE === 'true' ? switchTeamDummy : switchTeamReal
 
 const setTeamSkin = async (serverConfig, { skinId, teamId }) => {
   const steamIds = await whoIsPlaying(serverConfig)
-
-  
 
   const playersWithDetails = [...await inspectPlayers(serverConfig, steamIds)]
 
