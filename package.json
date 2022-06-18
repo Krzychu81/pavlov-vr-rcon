@@ -11,10 +11,10 @@
     "rcon"
   ],
   "scripts": {
-    "start": "CI=true lerna run start --stream",
-    "dev": "CI=true lerna run dev --stream",
-    "dev:win": "set \"CI=true\" && lerna run dev --stream",
-    "start:win": "set \"CI=true\" && lerna run start --stream"
+    "start": "CI=true lerna run start --parallel",
+    "dev": "CI=true lerna run dev --parallel",
+    "dev:win": "set \"CI=true\" && lerna run dev --parallel",
+    "start:win": "set \"CI=true\" && lerna run start --parallel"
   },
   "devDependencies": {
     "lerna": "^3.22.1"
