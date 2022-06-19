@@ -9,7 +9,7 @@ const router = express.Router({ mergeParams: true })
 router.get('/', async (req, res) => {
   const { serverConfig } = req.custom
 
-  const data = await get('https://pablub.club/')
+  const data = await get('https://pablub.xyz/')
   const visible = data.indexOf(`<td>${serverConfig.name}</td>`) > -1
 
   return res.status(200).json({
