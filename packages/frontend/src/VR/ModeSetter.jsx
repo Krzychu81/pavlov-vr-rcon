@@ -4,7 +4,7 @@ import ToggleButton from 'react-bootstrap/ToggleButton'
 import Section from '../Layout/Section'
 
 const gameModes = [
-  'SND', 'TDM', 'DM', 'GUN', 'ZWV', 'WW2GUN', 'TANKTDM', 'KOTH'
+  'SND', 'TDM', 'DM', 'GUN', 'ZWV', 'WW2GUN', 'TANKTDM', 'KOTH', 'OITC', 'TTT', 'HIDE', 'INFECTION', 'PUSH', 'PH'
 ]
 
 const ModeSetter = ({ setMode, mode }) => {
