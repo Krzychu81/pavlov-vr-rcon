@@ -36,7 +36,7 @@ const internalMaps = [
     title: 'Station',
   },
   {
-    id: 'prisonbreak',
+    id: 'siberia',
     title: 'Siberia',
   },
   {
